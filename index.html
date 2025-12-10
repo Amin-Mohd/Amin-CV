@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amin Abdulghaffar | IT Specialist Portfolio</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Garamond:wght@400;600;700&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        /* BEIGE VELVET THEME VARIABLES */
+        :root {
+            --bg-body: #FAF0E6;          /* Linen / Old Lace - Soft Beige */
+            --bg-card: #FFFFFF;          /* Pure White Cards for separation */
+            --text-main: #332D2D;        /* Deep Espresso Brown */
+            --text-secondary: #8B8378;   /* Muted warm gray for secondary text */
+            --accent-primary: #A0522D;   /* Sienna Brown */
+            --accent-secondary: #CC9966; /* Muted Gold / Warm Camel */
+            --nav-bg: #FFFFFF;
+            --shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 15px 35px rgba(0, 0, 0, 0.1);
+            --radius-card: 16px;
+            --radius-btn: 980px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Playfair Display', serif; 
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* NAVIGATION - Simple and Clean */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: var(--nav-bg);
+            box-shadow: var(--shadow-sm);
+            transition: padding 0.3s ease;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            letter-spacing: 0.5px;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-primary);
+        }
+
+        /* HERO SECTION - Warm Greeting */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 20px 60px;
+            background: #fff8f5; 
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 0 0 6px #fff, 0 0 0 8px var(--accent-secondary);
+            margin-bottom: 2.5rem;
+            background-color: #eee;
+            border: 4px solid var(--bg-body);
+        }
+
+        h1 {
+            font-size: 3.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+            line-height: 1.1;
+        }
+
+        .typing-text {
+            font-size: 1.6rem;
+            color: var(--accent-primary);
+            font-weight: 500;
+            margin-bottom: 2rem;
+            height: 35px;
+        }
+
+        .hero p {
+            max-width: 600px;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: var(--radius-btn);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-secondary);
+            box-shadow: 0 8px 15px rgba(160, 82, 45, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: var(--bg-body);
+            color: var(--accent-primary);
+            border: 2px solid var(--accent-primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--accent-primary);
+            color: white;
+        }
+
+        /* GENERAL SECTION STYLING */
+        section {
+            padding: 6rem 10%;
+        }
+
+        .section-header {
+            margin-bottom: 3.5rem;
+            text-align: center;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .section-header h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--accent-secondary);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* CARD STYLE - Soft Bento */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: var(--radius-card);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .icon-large {
+            font-size: 2.5rem;
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
+        }
+
+        /* TIMELINE (Existing styles retained) */
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            padding-left: 30px;
+            border-left: 2px solid var(--accent-secondary);
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -37px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            background: var(--bg-body);
+            border: 3px solid var(--accent-primary);
+            border-radius: 50%;
+        }
+
+        .job-date {
+            font-size: 0.9rem;
+            color: var(--accent-secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .job-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .job-company {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        /* SKILLS FILTER (Existing styles retained) */
+        .filter-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: #F0EAD6; 
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--accent-primary);
+            color: white;
+            box-shadow: 0 4px 10px rgba(160, 82, 45, 0.2);
+        }
+
+        .skill-list li {
+            list-style: none;
+            margin-bottom: 8px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed #f0f0f0;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        
+        /* NEW: CERTIFICATION CARD STYLES (3D Flip) */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .flip-card {
+            background-color: transparent;
+            width: 100%;
+            height: 250px; /* Fixed height for consistent look */
+            perspective: 1000px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            box-shadow: var(--shadow-sm);
+            border-radius: var(--radius-card);
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: var(--radius-card);
+            background-color: var(--bg-card);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .flip-card-front {
+            color: var(--text-main);
+            border: 1px solid var(--accent-secondary); /* Slight border for distinction */
+        }
+
+        .flip-card-front h3 {
+            font-size: 1.5rem;
+            color: var(--accent-primary);
+            margin-bottom: 5px;
+        }
+
+        .flip-card-back {
+            background-color: var(--accent-primary);
+            color: white;
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-back p {
+            font-size: 1rem;
+            font-weight: 400;
+            margin-top: 10px;
+        }
+
+        .cert-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--accent-secondary);
+        }
+
+        /* EDUCATION CARD (Separate from flip cards) */
+        .edu-card {
+            margin-top: 30px;
+            border-left: 5px solid var(--accent-secondary);
+            padding: 2.5rem;
+        }
+
+
+        /* CONTACT & FOOTER (Existing styles retained) */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .contact-item {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: var(--radius-card);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+
+        footer {
+            background: var(--bg-card);
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        /* MOBILE OPTIMIZATION */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.8rem; }
+            .nav-links { display: none; }
+            section { padding: 4rem 5%; }
+            .timeline { padding-left: 20px; }
+            .flip-card { height: 220px; } /* Slightly smaller on mobile */
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <a href="#" class="logo">Amin Abdulghaffar</a>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#skills">Skills</a>
+            <a href="#certifications">Certifications</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <img src="profile.jpg" alt="Amin Abdulghaffar" class="profile-img" onerror="this.src='https://ui-avatars.com/api/?name=Amin+A&background=FAF0E6&color=332D2D&size=200'">
+        
+        <h1>Amin Abdulghaffar</h1>
+        <div class="typing-text" id="typewriter"></div>
+        
+        <p>
+            An experienced IT Specialist focused on robust Database Administration, System Automation, and core IT Operations across the Banking, Telecom, and Retail sectors.
+        </p>
+        
+        <div class="btn-group">
+            <a href="#contact" class="btn btn-primary">Contact Me</a>
+            <a href="#experience" class="btn btn-secondary">Explore History</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="section-header">
+            <h2>Core Expertise</h2>
+        </div>
+        <div class="bento-grid">
+            <div class="card">
+                <i class="fas fa-database icon-large"></i>
+                <h3>Database Mastery</h3>
+                <p style="color: var(--text-secondary); margin-top: 10px;">
+                    Expertise in Oracle & SQL Server deployment, backup management (Veritas), and recovery procedures.
+                </p>
+            </div>
+            <div class="card">
+                <i class="fas fa-robot icon-large"></i>
+                <h3>Process Automation</h3>
+                <p style="color: var(--text-secondary); margin-top: 10px;">
+                    Specialist in BMC Control-M workflow design and optimization using PowerShell, Linux Bash, and SQL scripts.
+                </p>
+            </div>
+            <div class="card">
+                <i class="fas fa-chart-bar icon-large"></i>
+                <h3>11+ Years Experience</h3>
+                <p style="color: var(--text-secondary); margin-top: 10px;">
+                    Productive career progression through Banking, Telecommunication, and Retail environments.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" style="background: #fff;">
+        <div class="section-header">
+            <h2>Professional Journey</h2>
+        </div>
+        <div class="timeline">
+            
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <span class="job-date">2022 - Present</span>
+                <div class="card job-card">
+                    <h3 class="job-title">Junior Database Administrator</h3>
+                    <div class="job-company">Bank ABC (Group Hub Processing)</div>
+                    <p style="color: var(--text-secondary);">
+                        Involved in database implementation, deployment, and managing crucial backup and recovery operations alongside automation support.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <span class="job-date">2021 - Present</span>
+                <div class="card job-card">
+                    <h3 class="job-title">System Automation Specialist</h3>
+                    <div class="job-company">Bank ABC</div>
+                    <p style="color: var(--text-secondary);">
+                        Managing BMC Control-M. Actively designing scripts (Linux/SQL) to provide automated, low-risk solutions for critical banking processes.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <span class="job-date">2016 - 2021</span>
+                <div class="card job-card">
+                    <h3 class="job-title">System Operations Specialist</h3>
+                    <div class="job-company">Bank ABC</div>
+                    <p style="color: var(--text-secondary);">
+                        Provided 1st level support for Core Banking (Ambit/Urbis), Trading (Fusion), and Risk systems, ensuring 24/7 service availability.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <span class="job-date">2011 - 2013</span>
+                <div class="card job-card">
+                    <h3 class="job-title">IT Infrastructure Support</h3>
+                    <div class="job-company">STC Telecommunication</div>
+                    <p style="color: var(--text-secondary);">
+                        Managed a team supporting over 800 users. Key involvement in Cloud Solutions (Citrix/VMware) and physical IT asset maintenance.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="section-header">
+            <h2>Technical Skills</h2>
+        </div>
+        
+        <div class="filter-nav">
+            <button class="filter-btn active" onclick="filterSkills('all')">All</button>
+            <button class="filter-btn" onclick="filterSkills('db')">Databases</button>
+            <button class="filter-btn" onclick="filterSkills('auto')">Automation/Scripting</button>
+            <button class="filter-btn" onclick="filterSkills('tools')">Infrastructure/Tools</button>
+        </div>
+
+        <div class="bento-grid">
+            <div class="card skill-card" data-category="db">
+                <h4 style="margin-bottom: 1rem; color: var(--text-main);">Database</h4>
+                <ul class="skill-list">
+                    <li>Oracle & SQL Server</li>
+                    <li>SSMS, SQL Developer, Toad</li>
+                    <li>Relational Database Modelling</li>
+                    <li>Veritas NetBackup</li>
+                </ul>
+            </div>
+
+            <div class="card skill-card" data-category="auto">
+                <h4 style="margin-bottom: 1rem; color: var(--text-main);">Automation & Scripting</h4>
+                <ul class="skill-list">
+                    <li>BMC Control-M (Advanced)</li>
+                    <li>PowerShell & Linux Bash</li>
+                    <li>RPA (Power Automate)</li>
+                    <li>C# / C++ / Assembly</li>
+                </ul>
+            </div>
+
+            <div class="card skill-card" data-category="tools">
+                <h4 style="margin-bottom: 1rem; color: var(--text-main);">Infrastructure & Tools</h4>
+                <ul class="skill-list">
+                    <li>VMware & Citrix Virtualization</li>
+                    <li>Solarwinds & Argent (Monitoring)</li>
+                    <li>Nessus / Tenable (Security)</li>
+                    <li>Power BI</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications" style="background: #fff;">
+        <div class="section-header">
+            <h2>Certifications & Education</h2>
+        </div>
+        <div style="max-width: 1000px; margin: 0 auto;">
+            
+            <div class="card edu-card">
+                <h3 style="color: var(--accent-primary); margin-bottom: 5px;"><i class="fas fa-graduation-cap"></i> BSc in Computer Engineering</h3>
+                <p style="color: var(--text-secondary);">University of Bahrain | 2004 - 2010</p>
+            </div>
+
+            <h3 style="margin: 40px 0 20px; text-align: center; color: var(--accent-primary);">Professional Certifications (Hover to Flip)</h3>
+
+            <div class="cert-grid">
+                
+                <div class="flip-card reveal">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <i class="fas fa-passport cert-icon"></i>
+                            <h3>SWIFT Access Administrator</h3>
+                            <p style="color: var(--text-secondary);">SWIFT | Nov 2023</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <i class="fas fa-check-circle" style="font-size: 2rem;"></i>
+                            <p>Expert certification in managing and administering the critical SWIFT Alliance Access banking platform.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card reveal">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <i class="fas fa-table cert-icon"></i>
+                            <h3>NoSQL Database Certified</h3>
+                            <p style="color: var(--text-secondary);">BIBF | Oct 2023</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <i class="fas fa-cogs" style="font-size: 2rem;"></i>
+                            <p>Training and certification focusing on modern non-relational database structures and administration.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card reveal">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <i class="fas fa-hand-sparkles cert-icon"></i>
+                            <h3>RPA Basic (Power Automate)</h3>
+                            <p style="color: var(--text-secondary);">BIBF | Mar 2023</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <i class="fas fa-microchip" style="font-size: 2rem;"></i>
+                            <p>Foundational skills in Robotic Process Automation, enabling efficient business process automation.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card reveal">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <i class="fab fa-aws cert-icon"></i>
+                            <h3>AWS Technical Essentials</h3>
+                            <p style="color: var(--text-secondary);">Amazon | Nov 2019</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <i class="fas fa-cloud" style="font-size: 2rem;"></i>
+                            <p>Understanding of core AWS services, cloud concepts, and basic cloud infrastructure deployment.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card reveal">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <i class="fas fa-code cert-icon"></i>
+                            <h3>Querying Microsoft SQL Server</h3>
+                            <p style="color: var(--text-secondary);">NIT | Jan 2017</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <i class="fas fa-search" style="font-size: 2rem;"></i>
+                            <p>Foundation training in advanced SQL querying and data manipulation for Microsoft SQL Server environments.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card reveal">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <i class="fas fa-project-diagram cert-icon"></i>
+                            <h3>Project Management Prof. (Training)</h3>
+                            <p style="color: var(--text-secondary);">MMTI | Aug 2016</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <i class="fas fa-calendar-check" style="font-size: 2rem;"></i>
+                            <p>Formal training in project life cycles, planning, execution, and risk management principles.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="section-header">
+            <h2>Get in Touch</h2>
+        </div>
+        <div class="bento-grid">
+            <div class="card contact-item">
+                <i class="fas fa-envelope icon-large"></i>
+                <h4 style="color: var(--text-secondary);">Email</h4>
+                <p>Amin.Mohd@live.com</p>
+            </div>
+            <div class="card contact-item">
+                <i class="fas fa-phone icon-large"></i>
+                <h4 style="color: var(--text-secondary);">Mobile</h4>
+                <p>+973 39621958</p>
+            </div>
+            <div class="card contact-item">
+                <i class="fas fa-map-marker-alt icon-large"></i>
+                <h4 style="color: var(--text-secondary);">Location</h4>
+                <p>Al-Muharraq, Bahrain</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Amin Abdulghaffar. Designed with a Beige Velvet aesthetic.</p>
+    </footer>
+
+    <script>
+        // TYPEWRITER EFFECT
+        const textOptions = ["Database Administrator", "System Automation Specialist", "IT Operations Expert"];
+        let count = 0;
+        let index = 0;
+        let currentText = "";
+        let letter = "";
+
+        (function type() {
+            if (count === textOptions.length) {
+                count = 0;
+            }
+            currentText = textOptions[count];
+            letter = currentText.slice(0, ++index);
+
+            const typewriterElement = document.getElementById("typewriter");
+            if (typewriterElement) {
+                typewriterElement.textContent = letter;
+            }
+
+            if (letter.length === currentText.length) {
+                setTimeout(() => {
+                    count++;
+                    index = 0;
+                }, 2000);
+            }
+            setTimeout(type, 80);
+        })();
+
+        // SCROLL REVEAL ANIMATION
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+        // SKILLS FILTER LOGIC
+        function filterSkills(category, event) {
+            // Button Active State
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            if (event && event.target) {
+                event.target.classList.add('active');
+            } else if (category === 'all') {
+                document.querySelector('.filter-nav .filter-btn').classList.add('active');
+            }
+
+            // Card Filtering
+            const cards = document.querySelectorAll('.skill-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'scale(1)';
+                    }, 50);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.95)';
+                    setTimeout(() => card.style.display = 'none', 300);
+                }
+            });
+        }
+        
+        // Initial filter on load
+        window.addEventListener('load', () => filterSkills('all', null));
+    </script>
+</body>
+</html>
